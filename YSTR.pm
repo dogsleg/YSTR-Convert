@@ -39,8 +39,8 @@ sub get_ftdna {
     return
 }
 
-sub get_yfull {
-    return
-}
+# sub get_yfull {
+#     return
+# }
 
 1;

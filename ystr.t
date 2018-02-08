@@ -12,7 +12,7 @@ use lib $dir;
 
 my $module = 'YSTR';
 
-plan tests => 11;
+plan tests => 10;
 
 ok -e "${dir}${module}.pm", "Missing $module.pm"
     or BAIL_OUT "You need to create file: $module.pm";
@@ -45,5 +45,5 @@ can_ok $module, "get_maximal"
 can_ok $module, "get_ftdna"
     or BAIL_OUT "Missing package $module; or missing sub get_ftdna()";
 
-can_ok $module, "get_yfull"
-    or BAIL_OUT "Missing package $module; or missing sub get_yfull()";
+# can_ok $module, "get_yfull"
+#     or BAIL_OUT "Missing package $module; or missing sub get_yfull()";
