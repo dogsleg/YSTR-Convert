@@ -10,7 +10,7 @@ use lib $dir;
 
 my $module = 'YSTR';
 
-plan tests => 9;
+plan tests => 11;
 
 ok -e "${dir}${module}.pm", "Missing $module.pm"
     or BAIL_OUT "You need to create file: $module.pm";
