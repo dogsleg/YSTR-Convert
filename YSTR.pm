@@ -57,8 +57,9 @@ sub new {
 
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
+    my $separator = $options->{"separator"} // " ";
 
-    bless { data => $data, absent => $absent, inline => $inline }, $class;
+    bless { data => $data, absent => $absent, inline => $inline, separator => $separator }, $class;
 }
 
 sub get_minimal {
