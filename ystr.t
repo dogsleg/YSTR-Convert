@@ -12,7 +12,7 @@ use lib $dir;
 
 my $module = 'YSTR';
 
-plan tests => 10;
+plan tests => 12;
 
 ok -e "${dir}${module}.pm", "Missing $module.pm"
     or BAIL_OUT "You need to create file: $module.pm";
@@ -21,6 +21,7 @@ eval "use $module";
 ok !$@, "Cannot load $module"
     or BAIL_OUT "Cannot load $module; Does it compile? Does it end with 1;?";
 
+# Check availability of our methods
 can_ok $module, "new"
     or BAIL_OUT "Missing package $module; or missing sub new()";
 
@@ -47,3 +48,7 @@ can_ok $module, "get_ftdna"
 
 # can_ok $module, "get_yfull"
 #     or BAIL_OUT "Missing package $module; or missing sub get_yfull()";
+
+# Check options
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "default absent value to 0";
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->{absent}, "n/a", "default absent value to n/a";
