@@ -7,6 +7,7 @@ use warnings;
 use Test::More;
 use JSON::PP;
 use FindBin;
+
 my $dir;
 BEGIN { $dir = $FindBin::Bin . '/' };
 use lib $dir;
@@ -15,7 +16,7 @@ my $cases_file = "${dir}cases.json";
 my $cases;
 my $decoder = JSON::PP->new();
 
-if (open my $fh, '<', $cases_file) {
+if ( open my $fh, '<', $cases_file ) {
     local $/ = undef;
     $cases = $decoder->decode( scalar <$fh> );
 } else {
@@ -51,10 +52,10 @@ is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ separator }, " ", "use ' ' as s
 is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->{ separator }, ", ", "use ', ' as inline value";
 
 # Check conversion
-foreach my $case (@$cases) {
-    my $sub = $case->{sub};
-    my $input = [ split / /, $case->{input} ];
-    my $object = $module->new($input);
+foreach my $case ( @$cases ) {
+    my $sub = $case->{ sub };
+    my $input = [ split / /, $case->{ input } ];
+    my $object = $module->new( $input );
     my $output = join ' ', $module->$sub;
-    is $output, $case->{expected}, $case->{name};
+    is $output, $case->{ expected }, $case->{ name };
 }
