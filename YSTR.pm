@@ -6,7 +6,7 @@ use warnings;
 
 sub new {
     my $class = shift;
-    my ($data) = @_;
+    my ($data, $options) = @_;
 
     # YHRD formats
     # Minimal, 8 STRs
