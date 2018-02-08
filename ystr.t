@@ -51,10 +51,10 @@ is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ separator }, " ", "use ' ' as s
 is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->{ separator }, ", ", "use ', ' as inline value";
 
 # Check conversion
-foreach my $c (@$cases) {
-    my $sub = $c->{sub};
-    my $input = [ split / /, $c->{input} ];
+foreach my $case (@$cases) {
+    my $sub = $case->{sub};
+    my $input = [ split / /, $case->{input} ];
     my $object = $module->new($input);
     my $output = join ' ', $module->$sub;
-    is $output, $c->{expected}, $c->{name};
+    is $output, $case->{expected}, $case->{name};
 }
