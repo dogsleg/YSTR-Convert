@@ -34,32 +34,11 @@ ok !$@, "Cannot load $module"
     or BAIL_OUT "Cannot load $module; Does it compile? Does it end with 1;?";
 
 # Check availability of our methods
-can_ok $module, "new"
-    or BAIL_OUT "Missing package $module; or missing sub new()";
-
-can_ok $module, "get_minimal"
-    or BAIL_OUT "Missing package $module; or missing sub get_minimal()";
-
-can_ok $module, "get_powerplexy"
-    or BAIL_OUT "Missing package $module; or missing sub get_powerplexy()";
-
-can_ok $module, "get_yfiler"
-    or BAIL_OUT "Missing package $module; or missing sub get_yfiler()";
-
-can_ok $module, "get_powerplexy23"
-    or BAIL_OUT "Missing package $module; or missing sub get_powerplexy23()";
-
-can_ok $module, "get_yfilerplus"
-    or BAIL_OUT "Missing package $module; or missing sub get_yfilerplus()";
-
-can_ok $module, "get_maximal"
-    or BAIL_OUT "Missing package $module; or missing sub get_maximal()";
-
-can_ok $module, "get_ftdna"
-    or BAIL_OUT "Missing package $module; or missing sub get_ftdna()";
-
-# can_ok $module, "get_yfull"
-#     or BAIL_OUT "Missing package $module; or missing sub get_yfull()";
+foreach my $sub (qw/ new get_minimal get_powerplexy get_yfiler get_powerplexy23 get_yfilerplus
+                        get_maximal get_ftdna /) {
+    can_ok $module, $sub
+        or BAIL_OUT "Missing package $module; or missing sub $sub()";
+}
 
 # Check options
 is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "use 0 as absent value";
