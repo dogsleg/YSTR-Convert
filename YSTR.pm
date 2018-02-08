@@ -56,8 +56,9 @@ sub new {
     die "Wrong number of STRs!" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 /);
 
     my $absent = $options->{"absent"} // 0;
+    my $inline = $options->{"inline"} // "-";
 
-    bless { data => $data, absent => $absent }, $class;
+    bless { data => $data, absent => $absent, inline => $inline }, $class;
 }
 
 sub get_minimal {

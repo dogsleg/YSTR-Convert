@@ -12,7 +12,7 @@ use lib $dir;
 
 my $module = 'YSTR';
 
-plan tests => 12;
+plan tests => 14;
 
 ok -e "${dir}${module}.pm", "Missing $module.pm"
     or BAIL_OUT "You need to create file: $module.pm";
@@ -50,5 +50,8 @@ can_ok $module, "get_ftdna"
 #     or BAIL_OUT "Missing package $module; or missing sub get_yfull()";
 
 # Check options
-is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "default absent value to 0";
-is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->{absent}, "n/a", "default absent value to n/a";
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "use 0 as absent value";
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->{ absent }, "n/a", "use n/a as absent value";
+
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ inline }, "-", "use '-' as inline value";
+is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { inline => "/" } )->{ inline }, "/", "use '/' as inline value";
