@@ -3,7 +3,10 @@ use strict;
 use warnings;
 
 sub new {
-    return
+    my $class = shift;
+    my ($data) = @_;
+
+    bless {data => $data}, $class;
 }
 
 sub get_minimal {
