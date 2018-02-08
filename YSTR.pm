@@ -1,4 +1,6 @@
 package YSTR;
+
+use autodie;
 use strict;
 use warnings;
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env perl
+
+use autodie;
 use strict;
 use warnings;
 
