@@ -8,6 +8,9 @@ sub new {
     my $class = shift;
     my ($data, $options) = @_;
 
+    # Check that we got the correct number of STR values
+    die "Wrong number of STRs!" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 /);
+
     # YHRD formats
     # Minimal, 8 STRs
     my @yhrd_minimal =
