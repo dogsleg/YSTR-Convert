@@ -53,13 +53,13 @@ subtest 'options testing' => sub {
 
     # Check options
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "use 0 as absent value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->{ absent }, "n/a", "use n/a as absent value";
+    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->absent, "n/a", "use n/a as absent value";
 
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ inline }, "-", "use '-' as inline value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { inline => "/" } )->{ inline }, "/", "use '/' as inline value";
+    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { inline => "/" } )->inline, "/", "use '/' as inline value";
 
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ separator }, " ", "use ' ' as separator value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->{ separator }, ", ", "use ', ' as inline value";
+    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->separator, ", ", "use ', ' as inline value";
 };
 
 subtest 'conversion testing' => sub {
