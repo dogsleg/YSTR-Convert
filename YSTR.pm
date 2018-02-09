@@ -78,20 +78,11 @@ sub set_separator {
     $self->{separator}= $separator;
 }
 
-sub get_absent {
-    my ($self) = @_;
-    return ($self->{absent});
-}
+sub get_absent { $_[0]->{ absent } }
 
-sub get_inline {
-    my ($self) = @_;
-    return ($self->{inline});
-}
+sub get_inline { $_[0]->{ inline } }
 
-sub get_separator {
-    my ($self) = @_;
-    return ($self->{separator});
-}
+sub get_separator { $_[0]->{ separator } }
 
 sub get_minimal {
     return
