@@ -36,13 +36,13 @@ subtest 'general module testing' => sub {
     plan tests => 2 + @subs;
 
     # Check availability of out module
-    ok -e "${dir}${module}.pm", "Missing $module.pm"
-        or BAIL_OUT "You need to create file: $module.pm";
+    ok -e "${dir}${module}.pm", "Availability of $module.pm"
+        or BAIL_OUT "Module $module.pm cannot be accessed";
 
     # Check module loading
     eval "use $module";
-    ok !$@, "Cannot load $module"
-        or BAIL_OUT "Cannot load $module; Does it compile? Does it end with 1;?";
+    ok !$@, "Loading of $module"
+        or BAIL_OUT "Cannot load $module";
 
     # Check availability of our methods
     foreach my $sub (@subs) {
@@ -57,16 +57,16 @@ subtest 'options testing' => sub {
     my $dumb_strs =  [ 1, 2, 3, 4, 5, 6, 7, 8 ];
 
     # Check absent option
-    is $module->new( $dumb_strs )->get_absent, 0, "use 0 as absent value";
-    is $module->new( $dumb_strs, { absent => "n/a" } )->get_absent, "n/a", "use n/a as absent value";
+    is $module->new( $dumb_strs )->get_absent, 0, "Use 0 as absent value";
+    is $module->new( $dumb_strs, { absent => "n/a" } )->get_absent, "n/a", "Use n/a as absent value";
 
     # Check inline option
-    is $module->new( $dumb_strs )->get_inline, "-", "use '-' as inline value";
-    is $module->new( $dumb_strs, { inline => "/" } )->get_inline, "/", "use '/' as inline value";
+    is $module->new( $dumb_strs )->get_inline, "-", "Use '-' as inline value";
+    is $module->new( $dumb_strs, { inline => "/" } )->get_inline, "/", "Use '/' as inline value";
 
     # Check separator option
-    is $module->new( $dumb_strs )->get_separator, " ", "use ' ' as separator value";
-    is $module->new( $dumb_strs, { separator => ", " } )->get_separator, ", ", "use ', ' as inline value";
+    is $module->new( $dumb_strs )->get_separator, " ", "Use ' ' as separator value";
+    is $module->new( $dumb_strs, { separator => ", " } )->get_separator, ", ", "Use ', ' as inline value";
 };
 
 subtest 'conversion testing' => sub {
