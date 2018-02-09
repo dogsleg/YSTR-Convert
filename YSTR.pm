@@ -62,21 +62,34 @@ sub new {
     bless { data => $data, absent => $absent, inline => $inline, separator => $separator }, $class;
 }
 
-sub absent {
+sub set_absent {
     my ($self, $absent) = @_;
     $self->{absent}= $absent if $absent;
     return ($self->{absent});
 }
 
-sub inline {
+sub set_inline {
     my ($self, $inline) = @_;
-    $self->{inline}= $inline if $inline;
+    $self->{inline}= $inline;
+}
+
+sub set_separator {
+    my ($self, $separator) = @_;
+    $self->{separator}= $separator;
+}
+
+sub get_absent {
+    my ($self) = @_;
+    return ($self->{absent});
+}
+
+sub get_inline {
+    my ($self) = @_;
     return ($self->{inline});
 }
 
-sub separator {
-    my ($self, $separator) = @_;
-    $self->{separator}= $separator if $separator;
+sub get_separator {
+    my ($self) = @_;
     return ($self->{separator});
 }
 

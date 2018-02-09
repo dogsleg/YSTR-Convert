@@ -27,7 +27,8 @@ plan tests => 3;
 
 my $module = 'YSTR';
 
-my @subs = qw/ new absent inline separator get_minimal get_powerplexy
+my @subs = qw/ new set_absent set_inline set_separator get_absent
+               get_inline get_separator get_minimal get_powerplexy
                get_yfiler get_powerplexy23 get_yfilerplus get_maximal
                get_ftdna /;
 
@@ -57,15 +58,15 @@ subtest 'options testing' => sub {
 
     # Check absent option
     is $module->new( $dumb_strs )->{ absent }, 0, "use 0 as absent value";
-    is $module->new( $dumb_strs, { absent => "n/a" } )->absent, "n/a", "use n/a as absent value";
+    is $module->new( $dumb_strs, { absent => "n/a" } )->get_absent, "n/a", "use n/a as absent value";
 
     # Check inline option
     is $module->new( $dumb_strs )->{ inline }, "-", "use '-' as inline value";
-    is $module->new( $dumb_strs, { inline => "/" } )->inline, "/", "use '/' as inline value";
+    is $module->new( $dumb_strs, { inline => "/" } )->get_inline, "/", "use '/' as inline value";
 
     # Check separator option
     is $module->new( $dumb_strs )->{ separator }, " ", "use ' ' as separator value";
-    is $module->new( $dumb_strs, { separator => ", " } )->separator, ", ", "use ', ' as inline value";
+    is $module->new( $dumb_strs, { separator => ", " } )->get_separator, ", ", "use ', ' as inline value";
 };
 
 subtest 'conversion testing' => sub {
