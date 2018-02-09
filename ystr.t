@@ -57,15 +57,15 @@ subtest 'options testing' => sub {
     my $dumb_strs =  [ 1, 2, 3, 4, 5, 6, 7, 8 ];
 
     # Check absent option
-    is $module->new( $dumb_strs )->{ absent }, 0, "use 0 as absent value";
+    is $module->new( $dumb_strs )->get_absent, 0, "use 0 as absent value";
     is $module->new( $dumb_strs, { absent => "n/a" } )->get_absent, "n/a", "use n/a as absent value";
 
     # Check inline option
-    is $module->new( $dumb_strs )->{ inline }, "-", "use '-' as inline value";
+    is $module->new( $dumb_strs )->get_inline, "-", "use '-' as inline value";
     is $module->new( $dumb_strs, { inline => "/" } )->get_inline, "/", "use '/' as inline value";
 
     # Check separator option
-    is $module->new( $dumb_strs )->{ separator }, " ", "use ' ' as separator value";
+    is $module->new( $dumb_strs )->get_separator, " ", "use ' ' as separator value";
     is $module->new( $dumb_strs, { separator => ", " } )->get_separator, ", ", "use ', ' as inline value";
 };
 

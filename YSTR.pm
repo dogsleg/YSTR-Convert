@@ -59,30 +59,29 @@ sub new {
     my $inline = $options->{"inline"} // "-";
     my $separator = $options->{"separator"} // " ";
 
-    bless { data => $data, absent => $absent, inline => $inline, separator => $separator }, $class;
+    bless { _data => $data, _absent => $absent, _inline => $inline, _separator => $separator }, $class;
 }
 
 sub set_absent {
     my ($self, $absent) = @_;
-    $self->{absent}= $absent if $absent;
-    return ($self->{absent});
+    $self->{ _absent }= $absent if $absent;
 }
 
 sub set_inline {
     my ($self, $inline) = @_;
-    $self->{inline}= $inline;
+    $self->{ _inline }= $inline if $inline;
 }
 
 sub set_separator {
     my ($self, $separator) = @_;
-    $self->{separator}= $separator;
+    $self->{ _separator }= $separator if $separator;
 }
 
-sub get_absent { $_[0]->{ absent } }
+sub get_absent { $_[0]->{ _absent } }
 
-sub get_inline { $_[0]->{ inline } }
+sub get_inline { $_[0]->{ _inline } }
 
-sub get_separator { $_[0]->{ separator } }
+sub get_separator { $_[0]->{ _separator } }
 
 sub get_minimal {
     return
