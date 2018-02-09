@@ -34,9 +34,11 @@ my @subs = qw/ new absent inline separator get_minimal get_powerplexy
 subtest 'general module testing' => sub {
     plan tests => 2 + @subs;
 
+    # Check availability of out module
     ok -e "${dir}${module}.pm", "Missing $module.pm"
         or BAIL_OUT "You need to create file: $module.pm";
 
+    # Check module loading
     eval "use $module";
     ok !$@, "Cannot load $module"
         or BAIL_OUT "Cannot load $module; Does it compile? Does it end with 1;?";
@@ -51,13 +53,15 @@ subtest 'general module testing' => sub {
 subtest 'options testing' => sub {
     plan tests => 6;
 
-    # Check options
+    # Check absent option
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "use 0 as absent value";
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->absent, "n/a", "use n/a as absent value";
 
+    # Check inline option
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ inline }, "-", "use '-' as inline value";
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { inline => "/" } )->inline, "/", "use '/' as inline value";
 
+    # Check separator option
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ separator }, " ", "use ' ' as separator value";
     is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->separator, ", ", "use ', ' as inline value";
 };
