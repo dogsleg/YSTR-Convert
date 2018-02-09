@@ -62,6 +62,24 @@ sub new {
     bless { data => $data, absent => $absent, inline => $inline, separator => $separator }, $class;
 }
 
+sub absent {
+    my ($self, $absent) = @_;
+    $self->{absent}= $absent if $absent;
+    return ($self->{absent});
+}
+
+sub inline {
+    my ($self, $inline) = @_;
+    $self->{inline}= $inline if $inline;
+    return ($self->{inline});
+}
+
+sub separator {
+    my ($self, $separator) = @_;
+    $self->{separator}= $separator if $separator;
+    return ($self->{separator});
+}
+
 sub get_minimal {
     return
 }
