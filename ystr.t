@@ -53,17 +53,19 @@ subtest 'general module testing' => sub {
 subtest 'options testing' => sub {
     plan tests => 6;
 
+    my $dumb_strs =  [ 1, 2, 3, 4, 5, 6, 7, 8 ];
+
     # Check absent option
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ absent }, 0, "use 0 as absent value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { absent => "n/a" } )->absent, "n/a", "use n/a as absent value";
+    is $module->new( $dumb_strs )->{ absent }, 0, "use 0 as absent value";
+    is $module->new( $dumb_strs, { absent => "n/a" } )->absent, "n/a", "use n/a as absent value";
 
     # Check inline option
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ inline }, "-", "use '-' as inline value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { inline => "/" } )->inline, "/", "use '/' as inline value";
+    is $module->new( $dumb_strs )->{ inline }, "-", "use '-' as inline value";
+    is $module->new( $dumb_strs, { inline => "/" } )->inline, "/", "use '/' as inline value";
 
     # Check separator option
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ] )->{ separator }, " ", "use ' ' as separator value";
-    is $module->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ], { separator => ", " } )->separator, ", ", "use ', ' as inline value";
+    is $module->new( $dumb_strs )->{ separator }, " ", "use ' ' as separator value";
+    is $module->new( $dumb_strs, { separator => ", " } )->separator, ", ", "use ', ' as inline value";
 };
 
 subtest 'conversion testing' => sub {
