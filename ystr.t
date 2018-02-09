@@ -23,7 +23,11 @@ if ( open my $fh, '<', $cases_file ) {
     die "Could not open '$cases_file' $!";
 }
 
-plan tests => 16 + @$cases;
+my @subs = qw/ new absent inline separator get_minimal get_powerplexy
+               get_yfiler get_powerplexy23 get_yfilerplus get_maximal
+               get_ftdna /;
+
+plan tests => 2 + 6 + @subs + @$cases;
 
 my $module = 'YSTR';
 
@@ -35,8 +39,7 @@ ok !$@, "Cannot load $module"
     or BAIL_OUT "Cannot load $module; Does it compile? Does it end with 1;?";
 
 # Check availability of our methods
-foreach my $sub (qw/ new get_minimal get_powerplexy get_yfiler get_powerplexy23 get_yfilerplus
-                        get_maximal get_ftdna /) {
+foreach my $sub (@subs) {
     can_ok $module, $sub
         or BAIL_OUT "Missing package $module; or missing sub $sub()";
 }
