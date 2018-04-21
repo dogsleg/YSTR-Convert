@@ -27,10 +27,10 @@ plan tests => 3;
 
 my $module = 'YSTR';
 
-my @subs = qw/ new set_absent set_inline set_separator get_absent
-               get_inline get_separator get_minimal get_powerplexy
-               get_yfiler get_powerplexy23 get_yfilerplus get_maximal
-               get_ftdna /;
+my @subs = qw/ new set_absent set_inline get_absent get_inline
+               get_minimal_str get_powerplexy_str get_yfiler_str
+               get_powerplexy23_str get_yfilerplus_str get_maximal_str
+               get_ftdna_str get_ftdnay500_str /;
 
 subtest 'general module testing' => sub {
     plan tests => 2 + @subs;
@@ -63,10 +63,6 @@ subtest 'options testing' => sub {
     # Check inline option
     is $module->new( $dumb_strs )->get_inline, "-", "Use '-' as inline value";
     is $module->new( $dumb_strs, { inline => "/" } )->get_inline, "/", "Use '/' as inline value";
-
-    # Check separator option
-    is $module->new( $dumb_strs )->get_separator, " ", "Use ' ' as separator value";
-    is $module->new( $dumb_strs, { separator => ", " } )->get_separator, ", ", "Use ', ' as inline value";
 };
 
 subtest 'conversion testing' => sub {
