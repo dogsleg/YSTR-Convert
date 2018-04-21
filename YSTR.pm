@@ -223,7 +223,7 @@ sub get_ftdna {
 # }
 
 sub _convert {
-    my ( $self, $output_format ) = @_; # val, input, output, inline, absent
+    my ( $self, $output_format ) = @_;
 
     my @formatted;
 
