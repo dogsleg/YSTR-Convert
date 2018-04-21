@@ -218,6 +218,10 @@ sub get_ftdna {
     return
 }
 
+sub get_ftdna_y500 {
+    return
+}
+
 # sub get_yfull {
 #     return
 # }
