@@ -220,35 +220,35 @@ sub get_inline { $_[0]->{ _inline } }
 
 sub get_separator { $_[0]->{ _separator } }
 
-sub get_minimal {
+sub get_minimal_str {
     return
 }
 
-sub get_powerplexy {
+sub get_powerplexy_str {
     return
 }
 
-sub get_yfiler {
+sub get_yfiler_str {
     return
 }
 
-sub get_powerplexy23 {
+sub get_powerplexy23_str {
     return
 }
 
-sub get_yfilerplus {
+sub get_yfilerplus_str {
     return
 }
 
-sub get_maximal {
+sub get_maximal_str {
     return
 }
 
-sub get_ftdna {
+sub get_ftdna_str {
     return
 }
 
-sub get_ftdna_y500 {
+sub get_ftdna_y500_str {
     return
 }
 
