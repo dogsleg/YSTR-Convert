@@ -273,57 +273,57 @@ sub get_ftdna_y500_str {
 #     return
 # }
 
-# sub _convert {
-#     my ( $self, $output_format ) = @_;
+sub _convert {
+    my ( $self, $output_format ) = @_;
 
-#     my @formatted;
+    my @formatted;
 
-#     foreach ( @{$output_format} ) {
-#         my $got_matched = 0;
-#         my $length      = @formatted;
+    foreach ( @{$output_format} ) {
+        my $got_matched = 0;
+        my $length      = @formatted;
 
-#         # Remove dash ("-") from STR name
-#         $_ =~ s/-//gx;
+        # Remove dash ("-") from STR name
+        $_ =~ s/-//gx;
 
-#         # Dirty hack to handle "." in YFull STR names, use "S" instead
-#         # $_ =~ s/\./S/g;
+        # Dirty hack to handle "." in YFull STR names, use "S" instead
+        # $_ =~ s/\./S/g;
 
-#         while ( my ( $index, $str ) = each @{$input} ) {
+        while ( my ( $index, $str ) = each @{$input} ) {
 
-#             $got_matched = 0;
+            $got_matched = 0;
 
-#             # Dirty hacks once more
-#             $str =~ s/-//gx;
+            # Dirty hacks once more
+            $str =~ s/-//gx;
 
-#             # $str =~ s/\./S/g;
+            # $str =~ s/\./S/g;
 
-#             if ( $str =~ m/$_\z/x ) {
+            if ( $str =~ m/$_\z/x ) {
 
-#                 if ($got_matched) {
-#                     $formatted[-1] .= $self->{_inline} . $self->{_data}[$index];
-#                 }
-#                 else {
-#                     $got_matched = 1;
-#                     if ( $self->{_data}[$index] =~ m/-/x ) {
-#                         my $new = $self->{_data}[$index];
-#                         $new =~ s/-/$self->{_inline}/gx;
-#                         push @formatted, $new;
-#                     }
-#                     else {
-#                         push @formatted, $self->{_data}[$index];
-#                     }
-#                 }
-#             }
-#         }
+                if ($got_matched) {
+                    $formatted[-1] .= $self->{_inline} . $self->{_data}[$index];
+                }
+                else {
+                    $got_matched = 1;
+                    if ( $self->{_data}[$index] =~ m/-/x ) {
+                        my $new = $self->{_data}[$index];
+                        $new =~ s/-/$self->{_inline}/gx;
+                        push @formatted, $new;
+                    }
+                    else {
+                        push @formatted, $self->{_data}[$index];
+                    }
+                }
+            }
+        }
 
-#         if ( $length == @formatted ) {
-#             push @formatted, $self->{_absent};
-#         }
+        if ( $length == @formatted ) {
+            push @formatted, $self->{_absent};
+        }
 
-#         $length      = @formatted;
-#         $got_matched = 0;
-#     }
-#     return @formatted;
-# }
+        $length      = @formatted;
+        $got_matched = 0;
+    }
+    return @formatted;
+}
 
 1;
