@@ -153,6 +153,36 @@ use warnings;
                           FTY189 DYS488 FTY283 FTY28 FTY578 DYS484
                           FTY858 FTY596 FTY915 FTY446 FTY452 FTY1006
                           FTY612 FTY507 /;
+
+    my %_formats = ( yhrd_minimal       => \@_yhrd_minimal,
+                     yhrd_powerplex_y   => \@_yhrd_powerplex_y,
+                     yhrd_yfiler        => \@_yhrd_yfiler,
+                     yhrd_powerplex_y23 => \@_yhrd_powerplex_y23,
+                     yhrd_yfiler_plus   => \@_yhrd_yfiler_plus,
+                     yhrd_maximal       => \@_yhrd_maximal,
+                     ftdna              => \@_ftdna,
+                     ftdna_y500         => \@_ftdna_y500 );
+
+    my $_get_format = sub {
+        return $_formats{$_[0]} if ( exists $_formats{$_[0]} );
+        die "ERROR: Requested unknown format" };
+
+    sub get_minimal_format { $_get_format->("yhrd_minimal") }
+
+    sub get_powerplex_y_format { $_get_format->("yhrd_powerplex_y")}
+
+    sub get_yfiler_format { $_get_format->("yhrd_yfiler")}
+
+    sub get_powerplex_y23_format { $_get_format->("yhrd_powerplex_y23")}
+
+    sub get_yfiler_plus_format { $_get_format->("yhrd_yfiler_plus")}
+
+    sub get_maximal_format { $_get_format->("yhrd_maximal")}
+
+    sub get_ftdna_format { $_get_format->("ftdna")}
+
+    sub get_ftdna_y500_format { $_get_format->("ftdna_y500")}
+
 }
 
 sub new {
@@ -160,7 +190,7 @@ sub new {
     my ($data, $options) = @_;
 
     # Check that we got the correct number of STR values
-    die "Wrong number of STRs!" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 /);
+    die "Wrong number of STRs!" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 552 /);
 
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
