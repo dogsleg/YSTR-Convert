@@ -265,7 +265,7 @@ sub get_ftdna_str {
     return
 }
 
-sub get_ftdna_y500_str {
+sub get_ftdnay500_str {
     return
 }
 
