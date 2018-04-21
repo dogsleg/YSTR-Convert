@@ -195,9 +195,8 @@ sub new {
 
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
-    my $separator = $options->{"separator"} // " ";
 
-    bless { _data => $data, _absent => $absent, _inline => $inline, _separator => $separator }, $class;
+    bless { _data => $data, _absent => $absent, _inline => $inline }, $class;
 }
 
 sub set_absent {
@@ -210,16 +209,9 @@ sub set_inline {
     $self->{ _inline }= $inline if $inline;
 }
 
-sub set_separator {
-    my ($self, $separator) = @_;
-    $self->{ _separator }= $separator if $separator;
-}
-
 sub get_absent { $_[0]->{ _absent } }
 
 sub get_inline { $_[0]->{ _inline } }
-
-sub get_separator { $_[0]->{ _separator } }
 
 sub get_minimal_str {
     return
