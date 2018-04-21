@@ -288,7 +288,7 @@ sub _convert {
         # Dirty hack to handle "." in YFull STR names, use "S" instead
         # $_ =~ s/\./S/g;
 
-        while ( my ( $index, $str ) = each @{$input} ) {
+        while ( my ( $index, $str ) = each @{$self->_format} ) {
 
             $got_matched = 0;
 
