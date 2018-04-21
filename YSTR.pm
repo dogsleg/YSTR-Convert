@@ -190,7 +190,8 @@ sub new {
     my ($data, $options) = @_;
 
     # Check that we got the correct number of STR values
-    die "Wrong number of STRs!" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 552 /);
+    die "ERROR: No STRs specified" unless (defined $data);
+    die "ERROR: Wrong number of STRs" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 552 /);
 
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
