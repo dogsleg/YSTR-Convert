@@ -193,10 +193,34 @@ sub new {
     die "ERROR: No STRs specified" unless (defined $data);
     die "ERROR: Wrong number of STRs" unless (grep { $_ == scalar @$data } qw/ 8 11 16 22 25 27 102 552 /);
 
+    sub guess_format {
+        my $len = scalar @{ shift @_ };
+        if ($len == 8) {
+            get_minimal_format()
+        } elsif ($len == 11) {
+            get_powerplex_y_format()
+        } elsif ($len == 16) {
+            get_yfiler_format()
+        } elsif ($len == 22) {
+            get_powerplex_y23()
+        } elsif ($len == 25) {
+            get_yfiler_plus()
+        } elsif ($len == 27) {
+            get_maximal()
+        } elsif ($len == 102) {
+            get_ftdna_format()
+        } elsif ($len == 552) {
+            get_ftdna_y500_format()
+        }
+    }
+
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
 
-    bless { _data => $data, _absent => $absent, _inline => $inline }, $class;
+    bless { _data => $data,
+            _format => guess_format($data),
+            _absent => $absent,
+            _inline => $inline }, $class;
 }
 
 sub set_absent {
@@ -249,57 +273,57 @@ sub get_ftdna_y500_str {
 #     return
 # }
 
-sub _convert {
-    my ( $self, $output_format ) = @_;
+# sub _convert {
+#     my ( $self, $output_format ) = @_;
 
-    my @formatted;
+#     my @formatted;
 
-    foreach ( @{$output_format} ) {
-        my $got_matched = 0;
-        my $length      = @formatted;
+#     foreach ( @{$output_format} ) {
+#         my $got_matched = 0;
+#         my $length      = @formatted;
 
-        # Remove dash ("-") from STR name
-        $_ =~ s/-//gx;
+#         # Remove dash ("-") from STR name
+#         $_ =~ s/-//gx;
 
-        # Dirty hack to handle "." in YFull STR names, use "S" instead
-        # $_ =~ s/\./S/g;
+#         # Dirty hack to handle "." in YFull STR names, use "S" instead
+#         # $_ =~ s/\./S/g;
 
-        while ( my ( $index, $str ) = each @{$input} ) {
+#         while ( my ( $index, $str ) = each @{$input} ) {
 
-            $got_matched = 0;
+#             $got_matched = 0;
 
-            # Dirty hacks once more
-            $str =~ s/-//gx;
+#             # Dirty hacks once more
+#             $str =~ s/-//gx;
 
-            # $str =~ s/\./S/g;
+#             # $str =~ s/\./S/g;
 
-            if ( $str =~ m/$_\z/x ) {
+#             if ( $str =~ m/$_\z/x ) {
 
-                if ($got_matched) {
-                    $formatted[-1] .= $self->{_inline} . $self->{_data}[$index];
-                }
-                else {
-                    $got_matched = 1;
-                    if ( $self->{_data}[$index] =~ m/-/x ) {
-                        my $new = $self->{_data}[$index];
-                        $new =~ s/-/$self->{_inline}/gx;
-                        push @formatted, $new;
-                    }
-                    else {
-                        push @formatted, $self->{_data}[$index];
-                    }
-                }
-            }
-        }
+#                 if ($got_matched) {
+#                     $formatted[-1] .= $self->{_inline} . $self->{_data}[$index];
+#                 }
+#                 else {
+#                     $got_matched = 1;
+#                     if ( $self->{_data}[$index] =~ m/-/x ) {
+#                         my $new = $self->{_data}[$index];
+#                         $new =~ s/-/$self->{_inline}/gx;
+#                         push @formatted, $new;
+#                     }
+#                     else {
+#                         push @formatted, $self->{_data}[$index];
+#                     }
+#                 }
+#             }
+#         }
 
-        if ( $length == @formatted ) {
-            push @formatted, $self->{_absent};
-        }
+#         if ( $length == @formatted ) {
+#             push @formatted, $self->{_absent};
+#         }
 
-        $length      = @formatted;
-        $got_matched = 0;
-    }
-    return @formatted;
-}
+#         $length      = @formatted;
+#         $got_matched = 0;
+#     }
+#     return @formatted;
+# }
 
 1;
