@@ -1,0 +1,32 @@
+YSTR-Convert version 0.01
+=========================
+
+By means of YSTR::Convert module one can convert between various Y-DNA
+STRs formats. Currently it supports the following formats:
+
+ * YHRD Minimal, 8 STRs
+ * YHRD PowerPlex Y, 11 STRs
+ * YHRD Yfiler, 16 STRs
+ * YHRD PowerPlex Y23, 22 STRs
+ * YHRD Yfiler Plus, 25 STRs
+ * YHRD Maximal, 27 STRs
+ * FTDNA, 102 STRs
+
+The module supports object-oriented style.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2018 by Lev Lamberov
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.26.1 or,
+at your option, any later version of Perl 5 you may have available.
