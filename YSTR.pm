@@ -238,87 +238,50 @@ sub get_absent { $_[0]->{ _absent } }
 
 sub get_inline { $_[0]->{ _inline } }
 
-sub get_minimal_str {
-    return
-}
-
-sub get_powerplexy_str {
-    return
-}
-
-sub get_yfiler_str {
-    return
-}
-
-sub get_powerplexy23_str {
-    return
-}
-
-sub get_yfilerplus_str {
-    return
-}
-
-sub get_maximal_str {
-    return
-}
-
-sub get_ftdna_str {
-    return
-}
-
-sub get_ftdnay500_str {
-    return
-}
-
-# sub get_yfull {
-#     return
-# }
-
 sub _convert {
     my ( $self, $output_format ) = @_;
 
     my @formatted;
 
-    foreach ( @{$output_format} ) {
+    foreach my $o_str ( @{$output_format} ) {
         my $got_matched = 0;
         my $length      = @formatted;
 
         # Remove dash ("-") from STR name
-        $_ =~ s/-//gx;
+        $o_str =~ s/-//gx;
 
         # Dirty hack to handle "." in YFull STR names, use "S" instead
         # $_ =~ s/\./S/g;
 
-        while ( my ( $index, $str ) = each @{$self->_format} ) {
+        while ( my ( $index, $i_str ) = each @{$self->{ _format }}) {
 
             $got_matched = 0;
 
             # Dirty hacks once more
-            $str =~ s/-//gx;
+            $i_str =~ s/-//gx;
 
             # $str =~ s/\./S/g;
 
-            if ( $str =~ m/$_\z/x ) {
-
+            if ( $i_str =~ m/$o_str\z/x ) {
                 if ($got_matched) {
-                    $formatted[-1] .= $self->{_inline} . $self->{_data}[$index];
+                    $formatted[-1] .= $self->{ _inline } . $self->{ _data }[$index];
                 }
                 else {
                     $got_matched = 1;
-                    if ( $self->{_data}[$index] =~ m/-/x ) {
-                        my $new = $self->{_data}[$index];
-                        $new =~ s/-/$self->{_inline}/gx;
+                    if ( $self->{ _data }[$index] =~ m/-/x ) {
+                        my $new = $self->{ _data }[$index];
+                        $new =~ s/-/$self->{ _inline }/gx;
                         push @formatted, $new;
                     }
                     else {
-                        push @formatted, $self->{_data}[$index];
+                        push @formatted, $self->{ _data }[$index];
                     }
                 }
             }
         }
 
         if ( $length == @formatted ) {
-            push @formatted, $self->{_absent};
+            push @formatted, $self->{ _absent };
         }
 
         $length      = @formatted;
@@ -326,5 +289,51 @@ sub _convert {
     }
     return @formatted;
 }
+
+sub get_minimal_str {
+    my $self = shift;
+    $self->_convert(get_minimal_format())
+}
+
+sub get_powerplexy_str {
+    my $self = shift;
+    $self->_convert(get_powerplexy_format())
+}
+
+sub get_yfiler_str {
+    my $self = shift;
+    $self->_convert(get_yfiler_format())
+}
+
+sub get_powerplexy23_str {
+    my $self = shift;
+    $self->_convert(get_powerplexy23_format())
+}
+
+sub get_yfilerplus_str {
+    my $self = shift;
+    $self->_convert(get_yfilerplus_format())
+}
+
+sub get_maximal_str {
+    my $self = shift;
+    $self->_convert(get_maximal_format())
+}
+
+sub get_ftdna_str {
+    my $self = shift;
+    $self->_convert(get_ftdna_format())
+}
+
+# TODO: Properly implement the following getters
+
+# sub get_ftdnay500_str {
+#     my $self = shift;
+#     self->_convert(get_ftdnay500_format())
+# }
+
+# sub get_yfull {
+#     return
+# }
 
 1;
