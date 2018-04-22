@@ -342,3 +342,89 @@ sub get_ftdna_str {
 # }
 
 1;
+
+__END__
+
+=head1 NAME
+
+YSTR::Convert - Convert STR data between various STR formats
+
+=head1 SYNOPSIS
+
+  package MySTR;
+  use YSTR::Convert;
+
+  # create a new object, passing your original STR data,
+  # [ 1, 2, 3, 4, 5, 6, 7, 8 ] as the first argument,
+  # and a hash, containing absent and inline values as
+  # the second argument
+  my $str_data = YSTR::Convert->new( [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+                                    { absent => 0,
+                                      inline => " " } );
+
+  # print your original STR data converted to YHRD Maximal format
+  print $str_data->get_maximal_str();
+
+=head1 DESCRIPTION
+
+YSTR::Convert provides object-oriented way to convert your Y-DNA STR
+data between various STR formats. Currently it supports the following
+formats:
+
+=over
+
+=item * YHRD Minimal, 8 STRs, C<get_minimal_str()> method
+
+=item * YHRD PowerPlex Y, 11 STRs, C<get_powerplexy_str()> method
+
+=item * YHRD Yfiler, 16 STRs, C<get_yfiler_str()> method
+
+=item * YHRD PowerPlex Y23, 22 STRs, C<get_powerplexy23_str()> method
+
+=item * YHRD Yfiler Plus, 25 STRs, C<get_yfilerplus_str()> method
+
+=item * YHRD Maximal, 27 STRs, C<get_maximal_str()> method
+
+=item * FTDNA, 102 STRs, C<get_ftdna_str()> method
+
+=back
+
+To convert Y-DNA STR data one needs to instantiate an objects, passing
+one's original STR data in form of an array as the first argument and
+(optionally) a hash with configuration options as the second argument.
+Configuration options C<absent> and C<inline> are supported. The value
+of the C<absent> option will be used as a value for STR which are
+absent from one's original STR data, by default the value of C<absent>
+is 0. The value of C<inline> option will be used as an inline
+separator in some multi-valued complex STRs (e. g., DYS385).
+
+In case your original data in one of the supported format lacks some
+STR values, use 0, "n/a", or any other value for them, which will help
+you easily distinguish them from other STR values. It is recommended
+to set the C<absent> option to the value chosen for such absent STR
+values in your original STR data.
+
+Configuration options can be viewed or changed after the instantiation
+with the help of their getters and setters: C<get_absent()>,
+C<set_absent()>, C<get_inline()>, and C<set_inline()>.
+
+All the supported STR formats are defined as the class data, one can
+access them by means of their corresponding class accessors:
+C<get_minimal_format()>, C<get_powerplexy_format()>,
+C<get_yfiler_format()>, C<get_powerplexy23_format()>,
+C<get_yfilerplus_format()>, C<get_maximal_format()>,
+C<get_ftdna_format()>.
+
+=head1 AUTHOR
+
+Lev Lamberov E<lt>dogsleg@riseup.netE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2018 by Lev Lamberov
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.26.1 or,
+at your option, any later version of Perl 5 you may have available.
+
+=cut
