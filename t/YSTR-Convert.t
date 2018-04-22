@@ -4,9 +4,11 @@ use autodie;
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 3;
 use JSON::PP;
 use FindBin;
+
+BEGIN { use_ok('YSTR::Convert') };
 
 my $dir;
 BEGIN { $dir = $FindBin::Bin . '/' };
@@ -23,33 +25,12 @@ if ( open my $fh, '<', $cases_file ) {
     die "Could not open '$cases_file' $!";
 }
 
-plan tests => 3;
-
-my $module = 'YSTR';
+my $module = 'YSTR::Convert';
 
 my @subs = qw/ new set_absent set_inline get_absent get_inline
                get_minimal_str get_powerplexy_str get_yfiler_str
                get_powerplexy23_str get_yfilerplus_str get_maximal_str
                get_ftdna_str /;
-
-subtest 'general module testing' => sub {
-    plan tests => 2 + @subs;
-
-    # Check availability of out module
-    ok -e "${dir}${module}.pm", "Availability of $module.pm"
-        or BAIL_OUT "Module $module.pm cannot be accessed";
-
-    # Check module loading
-    eval "use $module";
-    ok !$@, "Loading of $module"
-        or BAIL_OUT "Cannot load $module";
-
-    # Check availability of our methods
-    foreach my $sub (@subs) {
-        can_ok $module, $sub
-            or BAIL_OUT "Missing package $module; or missing sub $sub()";
-    }
-};
 
 subtest 'options testing' => sub {
     plan tests => 4;
