@@ -4,6 +4,8 @@ use autodie;
 use strict;
 use warnings;
 
+our $VERSION = '0.01';
+
 # YHRD formats
 {
     # Minimal, 8 STRs
@@ -60,7 +62,7 @@ use warnings;
                      DYS715 DYS504 DYS513 DYS561 DYS552 DYS726 DYS635
                      DYS587 DYS643 DYS497 DYS510 DYS434 DYS461 DYS435 /;
 
-    # FTDNA Y500, 552 STRs
+    # TODO: FTDNA Y500, 552 STRs
     my @_ftdna_y500 = qw/ DYS393 DYS390 DYS19 DYS391 DYS385 DYS426
                           DYS388 DYS439 DYS389I DYS392 DYS389II DYS458
                           DYS459 DYS455 DYS454 DYS447 DYS437 DYS448
@@ -153,6 +155,9 @@ use warnings;
                           FTY189 DYS488 FTY283 FTY28 FTY578 DYS484
                           FTY858 FTY596 FTY915 FTY446 FTY452 FTY1006
                           FTY612 FTY507 /;
+
+    # TODO: YFull STRs
+    my @_yfull = qw/ /;
 
     my %_formats = ( yhrd_minimal       => \@_yhrd_minimal,
                      yhrd_powerplex_y   => \@_yhrd_powerplex_y,
