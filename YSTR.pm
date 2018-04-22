@@ -196,29 +196,30 @@ sub new {
     sub guess_format {
         my $len = scalar @{ shift @_ };
         if ($len == 8) {
-            get_minimal_format()
+            return get_minimal_format()
         } elsif ($len == 11) {
-            get_powerplex_y_format()
+            return get_powerplexy_format()
         } elsif ($len == 16) {
-            get_yfiler_format()
+            return get_yfiler_format()
         } elsif ($len == 22) {
-            get_powerplex_y23()
+            return get_powerplexy23_format()
         } elsif ($len == 25) {
-            get_yfiler_plus()
+            return get_yfilerplus_format()
         } elsif ($len == 27) {
-            get_maximal()
+            return get_maximal_format()
         } elsif ($len == 102) {
-            get_ftdna_format()
+            return get_ftdna_format()
         } elsif ($len == 552) {
-            get_ftdna_y500_format()
+            return get_ftdnay500_format()
         }
     }
 
+    my @format = @{guess_format($data)};
     my $absent = $options->{"absent"} // 0;
     my $inline = $options->{"inline"} // "-";
 
-    bless { _data => $data,
-            _format => guess_format($data),
+    bless { _data   => $data,
+            _format => \@format,
             _absent => $absent,
             _inline => $inline }, $class;
 }
