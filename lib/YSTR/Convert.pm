@@ -10,7 +10,7 @@ use warnings;
     my @_yhrd_minimal = qw/ DYS19 DYS389I DYS389II DYS390 DYS391
                             DYS392 DYS393 DYS385 /;
 
-    # PowerPlex Y, 11
+    # PowerPlex Y, 11 STRs
     my @_yhrd_powerplex_y = qw/ DYS391 DYS389I DYS439 DYS389II DYS438
                                 DYS437 DYS19 DYS392 DYS393 DYS390
                                 DYS385 /;
