@@ -30,7 +30,7 @@ my $module = 'YSTR';
 my @subs = qw/ new set_absent set_inline get_absent get_inline
                get_minimal_str get_powerplexy_str get_yfiler_str
                get_powerplexy23_str get_yfilerplus_str get_maximal_str
-               get_ftdna_str get_ftdnay500_str /;
+               get_ftdna_str /;
 
 subtest 'general module testing' => sub {
     plan tests => 2 + @subs;
@@ -52,7 +52,7 @@ subtest 'general module testing' => sub {
 };
 
 subtest 'options testing' => sub {
-    plan tests => 6;
+    plan tests => 4;
 
     my $dumb_strs =  [ 1, 2, 3, 4, 5, 6, 7, 8 ];
 
@@ -73,7 +73,7 @@ subtest 'conversion testing' => sub {
         my $sub = $case->{ sub };
         my $input = [ split / /, $case->{ input } ];
         my $object = $module->new( $input );
-        my $output = join ' ', $module->$sub;
+        my $output = join ' ', $object->$sub;
         is $output, $case->{ expected }, $case->{ name };
     }
 };
