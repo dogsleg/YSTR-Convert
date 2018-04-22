@@ -169,19 +169,19 @@ use warnings;
 
     sub get_minimal_format { $_get_format->("yhrd_minimal") }
 
-    sub get_powerplex_y_format { $_get_format->("yhrd_powerplex_y")}
+    sub get_powerplexy_format { $_get_format->("yhrd_powerplex_y")}
 
     sub get_yfiler_format { $_get_format->("yhrd_yfiler")}
 
-    sub get_powerplex_y23_format { $_get_format->("yhrd_powerplex_y23")}
+    sub get_powerplexy23_format { $_get_format->("yhrd_powerplex_y23")}
 
-    sub get_yfiler_plus_format { $_get_format->("yhrd_yfiler_plus")}
+    sub get_yfilerplus_format { $_get_format->("yhrd_yfiler_plus")}
 
     sub get_maximal_format { $_get_format->("yhrd_maximal")}
 
     sub get_ftdna_format { $_get_format->("ftdna")}
 
-    sub get_ftdna_y500_format { $_get_format->("ftdna_y500")}
+    sub get_ftdnay500_format { $_get_format->("ftdna_y500")}
 
 }
 
