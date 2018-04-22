@@ -1,4 +1,4 @@
-package YSTR;
+package YSTR::Convert;
 
 use autodie;
 use strict;
