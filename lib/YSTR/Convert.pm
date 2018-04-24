@@ -63,98 +63,112 @@ our $VERSION = '0.01';
                      DYS587 DYS643 DYS497 DYS510 DYS434 DYS461 DYS435 /;
 
     # TODO: FTDNA Y500, 552 STRs
-    my @_ftdna_y500 = qw/ DYS393 DYS390 DYS19 DYS391 DYS385 DYS426
-                          DYS388 DYS439 DYS389I DYS392 DYS389II DYS458
-                          DYS459 DYS455 DYS454 DYS447 DYS437 DYS448
-                          DYS449 DYS464 DYS460 Y-GATA-H4 YCAII DYS456
-                          DYS607 DYS576 DYS570 CDY DYS442 DYS438
-                          DYS531 DYS578 DYF395S1 DYS590 DYS537 DYS641
-                          DYS472 DYF406S1 DYS511 DYS425 DYS413 DYS557
-                          DYS594 DYS436 DYS490 DYS534 DYS450 DYS444
-                          DYS481 DYS520 DYS446 DYS617 DYS568 DYS487
-                          DYS572 DYS640 DYS492 DYS565 DYS710 DYS485
-                          DYS632 DYS495 DYS540 DYS714 DYS716 DYS717
-                          DYS505 DYS556 DYS549 DYS589 DYS522 DYS494
-                          DYS533 DYS636 DYS575 DYS638 DYS462 DYS452
-                          DYS445 Y-GATA-A10 DYS463 DYS441 Y-GGAAT-1B07
-                          DYS525 DYS712 DYS593 DYS650 DYS532 DYS715
-                          DYS504 DYS513 DYS561 DYS552 DYS726 DYS635
-                          DYS587 DYS643 DYS497 DYS510 DYS434 DYS461
-                          DYS435 FTY371 FTY303 FTY10 FTY284 FTY219
-                          FTY324 FTY327 FTY394 DYS538 FTY220 FTY254
-                          FTY19 FTY4 DYS577 FTY24 FTY346 FTY160 FTY62
-                          FTY400 FTY114 FTY246 FTY26 FTY368 FTY173
-                          FTY209 FTY337 FTY81 FTY387 FTY361 FTY330
-                          FTY65 FTY168 FTY171 FTY136 FTY53 FTY40
-                          FTY386 FTY100 FTY152 FTY55 FTY297 FTY370
-                          FTY103 FTY64 FTY174 FTY313 FTY362 FTY342
-                          FTY161 FTY374 FTY316 FTY101 FTY204 DYS477
-                          FTY192 DYS502 FTY341 DYS493 FTY1 FTY227
-                          DYS499 FTY391 FTY353 FTY332 FTY163 DYS483
-                          FTY172 FTY180 DYS581 FTY179 FTY188 FTY369
-                          FTY70 FTY63 DYS508 FTY347 FTY83 FTY277
-                          FTY276 FTY195 FTY109 FTY356 FTY215 FTY105
-                          FTY123 FTY242 FTY214 FTY132 FTY262 FTY333
-                          FTY208 DYF398B FTY43 FTY166 FTY13 FTY11
-                          DYS584 DYS608 FTY95 FTY151 FTY388 FTY256
-                          DYS580 FTY234 FTY268 FTY139 FTY27 FTY75
-                          DYS512 FTY329 FTY320 FTY7 FTY247 FTY211
-                          DYS474 FTY39 FTY376 FTY37 FTY373 DYS475
-                          FTY138 FTY288 FTY264 FTY93 FTY380 FTY18
-                          FTY115 DYS569 FTY390 FTY46 FTY243 FTY322
-                          FTY281 FTY153 FTY181 FTY184 FTY359 FTY121
-                          FTY74 FTY279 DYS530 FTY45 DYS573 DYS542
-                          FTY36 FTY304 FTY203 FTY291 FTY142 FTY191
-                          FTY183 FTY141 FTY299 FTY193 FTY124 FTY16
-                          FTY236 FTY185 FTY378 FTY225 FTY397 FTY3
-                          FTY67 FTY182 FTY334 DYS623 FTY348 FTY357
-                          FTY275 FTY306 FTY383 FTY253 FTY285 DYS645
-                          FTY17 FTY85 DYS598 FTY375 FTY325 FTY12
-                          FTY365 FTY35 FTY237 FTY238 FTY305 FTY56
-                          FTY129 FTY352 FTY292 FTY154 DYS539 FTY301
-                          FTY366 FTY231 DYS618 FTY216 FTY82 FTY393
-                          FTY155 FTY68 FTY32 FTY265 FTY300 FTY143
-                          FTY201 FTY199 FTY86 FTY98 FTY144 DYS541
-                          DYS507 FTY20 FTY116 FTY308 FTY177 FTY89
-                          FTY158 FTY22 FTY84 FTY186 FTY396 FTY91 FTY29
-                          FTY78 FTY229 FTY260 FTY250 FTY364 DYS476
-                          FTY221 FTY57 FTY377 FTY384 DYS466 FTY363
-                          FTY137 FTY69 FTY72 FTY251 FTY2 FTY217 FTY257
-                          FTY120 FTY25 FTY252 FTY33 FTY42 FTY54 FTY372
-                          DYS480 FTY176 FTY76 FTY66 FTY197 FTY385
-                          FTY270 FTY298 FTY198 FTY117 DYS544 FTY159
-                          FTY232 FTY156 FTY343 FTY296 FTY311 FTY344
-                          FTY178 FTY367 FTY73 FTY112 FTY295 DYS616
-                          FTY338 FTY196 FTY157 FTY162 DYS551 FTY148
-                          FTY94 FTY52 FTY131 FTY9 FTY194 FTY8 FTY318
-                          FTY317 FTY99 FTY289 FTY169 FTY51 FTY345
-                          FTY398 FTY111 FTY273 FTY382 FTY47 FTY30
-                          FTY147 DYS615 FTY302 FTY354 FTY326 FTY88
-                          FTY248 FTY267 FTY170 FTY60 DYS453 FTY249
-                          FTY167 DYS624 FTY134 FTY235 FTY145 FTY14
-                          FTY80 FTY50 DYS514 FTY340 DYS585 DYS516
-                          FTY293 FTY207 FTY278 FTY210 DYS523 FTY269
-                          FTY530 FTY1156 FTY1070 FTY906 FTY1004 FTY331
-                          FTY31 FTY226 FTY335 DYS583 FTY339 FTY113
-                          FTY280 FTY255 FTY59 DYS620 FTY349 FTY130
-                          FTY119 DYF398A FTY58 FTY127 FTY321 FTY92
-                          FTY392 DYF392 FTY290 FTY312 FTY135 FTY150
-                          FTY294 FTY244 FTY48 FTY282 DYS489 FTY272
-                          FTY239 FTY258 FTY49 DYS574 FTY41 FTY905
-                          FTY1103 FTY502 FTY743 FTY443 FTY670 FTY883
-                          DYS631 FTY1042 FTY510 DYS389B FTY512 FTY837
-                          DYS642 FTY407 FTY935 FTY563 FTY1016 FTY1091
-                          FTY1049 FTY1155 DYS602 FTY587 FTY635 FTY904
-                          DYS543 FTY1148 FTY861 FTY742 FTY433 FTY1039
-                          FTY71 FTY259 FTY108 FTY336 FTY44 FTY233
-                          FTY274 FTY34 FTY942 FTY1068 FTY945 FTY1051
-                          FTY658 FTY625 FTY800 FTY818 FTY971 FTY509
-                          FTY1025 FTY835 FTY984 DYS637 FTY832 FTY689
-                          FTY998 FTY520 FTY445 FTY809 FTY428 FTY562
-                          FTY897 FTY1064 FTY1088 FTY1052 DYF405 FTY310
-                          FTY189 DYS488 FTY283 FTY28 FTY578 DYS484
-                          FTY858 FTY596 FTY915 FTY446 FTY452 FTY1006
-                          FTY612 FTY507 /;
+    my @_ftdna_y500 = ( @_ftdna, qw / FTY371 FTY303 FTY10 FTY284
+                                      FTY219 FTY324 FTY327 FTY394
+                                      DYS538 FTY220 FTY254 FTY19 FTY4
+                                      DYS577 FTY24 FTY346 FTY160 FTY62
+                                      FTY400 FTY114 FTY246 FTY26
+                                      FTY368 FTY173 FTY209 FTY337
+                                      FTY81 FTY387 FTY361 FTY330 FTY65
+                                      FTY168 FTY171 FTY136 FTY53 FTY40
+                                      FTY386 FTY100 FTY152 FTY55
+                                      FTY297 FTY370 FTY103 FTY64
+                                      FTY174 FTY313 FTY362 FTY342
+                                      FTY161 FTY374 FTY316 FTY101
+                                      FTY204 DYS477 FTY192 DYS502
+                                      FTY341 DYS493 FTY1 FTY227 DYS499
+                                      FTY391 FTY353 FTY332 FTY163
+                                      DYS483 FTY172 FTY180 DYS581
+                                      FTY179 FTY188 FTY369 FTY70 FTY63
+                                      DYS508 FTY347 FTY83 FTY277
+                                      FTY276 FTY195 FTY109 FTY356
+                                      FTY215 FTY105 FTY123 FTY242
+                                      FTY214 FTY132 FTY262 FTY333
+                                      FTY208 DYF398B FTY43 FTY166
+                                      FTY13 FTY11 DYS584 DYS608 FTY95
+                                      FTY151 FTY388 FTY256 DYS580
+                                      FTY234 FTY268 FTY139 FTY27 FTY75
+                                      DYS512 FTY329 FTY320 FTY7 FTY247
+                                      FTY211 DYS474 FTY39 FTY376 FTY37
+                                      FTY373 DYS475 FTY138 FTY288
+                                      FTY264 FTY93 FTY380 FTY18 FTY115
+                                      DYS569 FTY390 FTY46 FTY243
+                                      FTY322 FTY281 FTY153 FTY181
+                                      FTY184 FTY359 FTY121 FTY74
+                                      FTY279 DYS530 FTY45 DYS573
+                                      DYS542 FTY36 FTY304 FTY203
+                                      FTY291 FTY142 FTY191 FTY183
+                                      FTY141 FTY299 FTY193 FTY124
+                                      FTY16 FTY236 FTY185 FTY378
+                                      FTY225 FTY397 FTY3 FTY67 FTY182
+                                      FTY334 DYS623 FTY348 FTY357
+                                      FTY275 FTY306 FTY383 FTY253
+                                      FTY285 DYS645 FTY17 FTY85 DYS598
+                                      FTY375 FTY325 FTY12 FTY365 FTY35
+                                      FTY237 FTY238 FTY305 FTY56
+                                      FTY129 FTY352 FTY292 FTY154
+                                      DYS539 FTY301 FTY366 FTY231
+                                      DYS618 FTY216 FTY82 FTY393
+                                      FTY155 FTY68 FTY32 FTY265 FTY300
+                                      FTY143 FTY201 FTY199 FTY86 FTY98
+                                      FTY144 DYS541 DYS507 FTY20
+                                      FTY116 FTY308 FTY177 FTY89
+                                      FTY158 FTY22 FTY84 FTY186 FTY396
+                                      FTY91 FTY29 FTY78 FTY229 FTY260
+                                      FTY250 FTY364 DYS476 FTY221
+                                      FTY57 FTY377 FTY384 DYS466
+                                      FTY363 FTY137 FTY69 FTY72 FTY251
+                                      FTY2 FTY217 FTY257 FTY120 FTY25
+                                      FTY252 FTY33 FTY42 FTY54 FTY372
+                                      DYS480 FTY176 FTY76 FTY66 FTY197
+                                      FTY385 FTY270 FTY298 FTY198
+                                      FTY117 DYS544 FTY159 FTY232
+                                      FTY156 FTY343 FTY296 FTY311
+                                      FTY344 FTY178 FTY367 FTY73
+                                      FTY112 FTY295 DYS616 FTY338
+                                      FTY196 FTY157 FTY162 DYS551
+                                      FTY148 FTY94 FTY52 FTY131 FTY9
+                                      FTY194 FTY8 FTY318 FTY317 FTY99
+                                      FTY289 FTY169 FTY51 FTY345
+                                      FTY398 FTY111 FTY273 FTY382
+                                      FTY47 FTY30 FTY147 DYS615 FTY302
+                                      FTY354 FTY326 FTY88 FTY248
+                                      FTY267 FTY170 FTY60 DYS453
+                                      FTY249 FTY167 DYS624 FTY134
+                                      FTY235 FTY145 FTY14 FTY80 FTY50
+                                      DYS514 FTY340 DYS585 DYS516
+                                      FTY293 FTY207 FTY278 FTY210
+                                      DYS523 FTY269 FTY530 FTY1156
+                                      FTY1070 FTY906 FTY1004 FTY331
+                                      FTY31 FTY226 FTY335 DYS583
+                                      FTY339 FTY113 FTY280 FTY255
+                                      FTY59 DYS620 FTY349 FTY130
+                                      FTY119 DYF398A FTY58 FTY127
+                                      FTY321 FTY92 FTY392 DYF392
+                                      FTY290 FTY312 FTY135 FTY150
+                                      FTY294 FTY244 FTY48 FTY282
+                                      DYS489 FTY272 FTY239 FTY258
+                                      FTY49 DYS574 FTY41 FTY905
+                                      FTY1103 FTY502 FTY743 FTY443
+                                      FTY670 FTY883 DYS631 FTY1042
+                                      FTY510 DYS389B FTY512 FTY837
+                                      DYS642 FTY407 FTY935 FTY563
+                                      FTY1016 FTY1091 FTY1049 FTY1155
+                                      DYS602 FTY587 FTY635 FTY904
+                                      DYS543 FTY1148 FTY861 FTY742
+                                      FTY433 FTY1039 FTY71 FTY259
+                                      FTY108 FTY336 FTY44 FTY233
+                                      FTY274 FTY34 FTY942 FTY1068
+                                      FTY945 FTY1051 FTY658 FTY625
+                                      FTY800 FTY818 FTY971 FTY509
+                                      FTY1025 FTY835 FTY984 DYS637
+                                      FTY832 FTY689 FTY998 FTY520
+                                      FTY445 FTY809 FTY428 FTY562
+                                      FTY897 FTY1064 FTY1088 FTY1052
+                                      DYF405 FTY310 FTY189 DYS488
+                                      FTY283 FTY28 FTY578 DYS484
+                                      FTY858 FTY596 FTY915 FTY446
+                                      FTY452 FTY1006 FTY612 FTY507 / );
 
     # TODO: YFull STRs
     my @_yfull = qw/ /;
