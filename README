@@ -4,12 +4,12 @@ YSTR-Convert version 0.01
 By means of YSTR::Convert module one can convert between various Y-DNA
 STRs formats. Currently it supports the following formats:
 
- * YHRD Minimal, 8 STRs
- * YHRD PowerPlex Y, 11 STRs
- * YHRD Yfiler, 16 STRs
- * YHRD PowerPlex Y23, 22 STRs
- * YHRD Yfiler Plus, 25 STRs
- * YHRD Maximal, 27 STRs
+ * Minimal, 8 STRs
+ * PowerPlex Y, 11 STRs
+ * Yfiler, 16 STRs
+ * PowerPlex Y23, 22 STRs
+ * Yfiler Plus, 25 STRs
+ * Maximal, 27 STRs
  * FTDNA, 102 STRs
 
 The module supports object-oriented style.
