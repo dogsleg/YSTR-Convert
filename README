@@ -23,6 +23,9 @@ To install this module type the following:
    make test
    make install
 
+Notice that to running tests requires JSON::PP module, which is used
+to parse the t/cases.json file, which contain a sample STR data.
+
 COPYRIGHT AND LICENCE
 
 Copyright (C) 2018 by Lev Lamberov
