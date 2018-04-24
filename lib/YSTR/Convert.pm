@@ -6,38 +6,38 @@ use warnings;
 
 our $VERSION = '0.01';
 
-# YHRD formats
+# Supported formats
 {
     # Minimal, 8 STRs
-    my @_yhrd_minimal = qw/ DYS19 DYS389I DYS389II DYS390 DYS391
+    my @_minimal = qw/ DYS19 DYS389I DYS389II DYS390 DYS391
                             DYS392 DYS393 DYS385 /;
 
     # PowerPlex Y, 11 STRs
-    my @_yhrd_powerplex_y = qw/ DYS391 DYS389I DYS439 DYS389II DYS438
+    my @_powerplex_y = qw/ DYS391 DYS389I DYS439 DYS389II DYS438
                                 DYS437 DYS19 DYS392 DYS393 DYS390
                                 DYS385 /;
 
     # Yfiler, 16 STRs
-    my @_yhrd_yfiler = qw/ DYS456 DYS389I DYS390 DYS389II DYS458 DYS19
+    my @_yfiler = qw/ DYS456 DYS389I DYS390 DYS389II DYS458 DYS19
                            DYS385 DYS393 DYS391 DYS439 DYS635 DYS392
                            YGATAH4 DYS437 DYS438 DYS448 /;
 
     # PowerPlex Y23, 22 STRs
-    my @_yhrd_powerplex_y23 = qw/ DYS576 DYS389I DYS448 DYS389II DYS19
+    my @_powerplex_y23 = qw/ DYS576 DYS389I DYS448 DYS389II DYS19
                                  DYS391 DYS481 DYS549 DYS533 DYS438
                                  DYS437 DYS570 DYS635 DYS390 DYS439
                                  DYS392 DYS643 DYS393 DYS458 DYS385
                                  DYS456 YGATAH4 /;
 
     # Yfiler Plus, 25 STRs
-    my @_yhrd_yfiler_plus = qw/ DYS576 DYS389I DYS635 DYS389II DYS627
+    my @_yfiler_plus = qw/ DYS576 DYS389I DYS635 DYS389II DYS627
                                 DYS460 DYS458 DYS19 YGATAH4 DYS448
                                 DYS391 DYS456 DYS390 DYS438 DYS392
                                 DYS518 DYS570 DYS437 DYS385 DYS449
                                 DYS393 DYS439 DYS481 DYF387S1 DYS533 /;
 
     # Maximal, 27 STRs
-    my @_yhrd_maximal = ( @_yhrd_minimal, qw/ DYS438 DYS439 DYS437
+    my @_maximal = ( @_minimal, qw/ DYS438 DYS439 DYS437
                                               DYS448 DYS456 DYS458
                                               DYS635 YGATAH4 DYS481
                                               DYS533 DYS549 DYS570
@@ -173,30 +173,30 @@ our $VERSION = '0.01';
     # TODO: YFull STRs
     my @_yfull = qw/ /;
 
-    my %_formats = ( yhrd_minimal       => \@_yhrd_minimal,
-                     yhrd_powerplex_y   => \@_yhrd_powerplex_y,
-                     yhrd_yfiler        => \@_yhrd_yfiler,
-                     yhrd_powerplex_y23 => \@_yhrd_powerplex_y23,
-                     yhrd_yfiler_plus   => \@_yhrd_yfiler_plus,
-                     yhrd_maximal       => \@_yhrd_maximal,
-                     ftdna              => \@_ftdna,
-                     ftdna_y500         => \@_ftdna_y500 );
+    my %_formats = ( minimal       => \@_minimal,
+                     powerplex_y   => \@_powerplex_y,
+                     yfiler        => \@_yfiler,
+                     powerplex_y23 => \@_powerplex_y23,
+                     yfiler_plus   => \@_yfiler_plus,
+                     maximal       => \@_maximal,
+                     ftdna         => \@_ftdna,
+                     ftdna_y500    => \@_ftdna_y500 );
 
     my $_get_format = sub {
         return $_formats{$_[0]} if ( exists $_formats{$_[0]} );
         die "ERROR: Requested unknown format" };
 
-    sub get_minimal_format { $_get_format->("yhrd_minimal") }
+    sub get_minimal_format { $_get_format->("minimal") }
 
-    sub get_powerplexy_format { $_get_format->("yhrd_powerplex_y")}
+    sub get_powerplexy_format { $_get_format->("powerplex_y")}
 
-    sub get_yfiler_format { $_get_format->("yhrd_yfiler")}
+    sub get_yfiler_format { $_get_format->("yfiler")}
 
-    sub get_powerplexy23_format { $_get_format->("yhrd_powerplex_y23")}
+    sub get_powerplexy23_format { $_get_format->("powerplex_y23")}
 
-    sub get_yfilerplus_format { $_get_format->("yhrd_yfiler_plus")}
+    sub get_yfilerplus_format { $_get_format->("yfiler_plus")}
 
-    sub get_maximal_format { $_get_format->("yhrd_maximal")}
+    sub get_maximal_format { $_get_format->("maximal")}
 
     sub get_ftdna_format { $_get_format->("ftdna")}
 
@@ -376,7 +376,7 @@ YSTR::Convert - Convert STR data between various STR formats
                                     { absent => 0,
                                       inline => " " } );
 
-  # print your original STR data converted to YHRD Maximal format
+  # print your original STR data converted to Maximal format
   print $str_data->get_maximal_str();
 
 =head1 DESCRIPTION
@@ -387,17 +387,17 @@ formats:
 
 =over
 
-=item * YHRD Minimal, 8 STRs, C<get_minimal_str()> method
+=item * Minimal, 8 STRs, C<get_minimal_str()> method
 
-=item * YHRD PowerPlex Y, 11 STRs, C<get_powerplexy_str()> method
+=item * PowerPlex Y, 11 STRs, C<get_powerplexy_str()> method
 
-=item * YHRD Yfiler, 16 STRs, C<get_yfiler_str()> method
+=item * Yfiler, 16 STRs, C<get_yfiler_str()> method
 
-=item * YHRD PowerPlex Y23, 22 STRs, C<get_powerplexy23_str()> method
+=item * PowerPlex Y23, 22 STRs, C<get_powerplexy23_str()> method
 
-=item * YHRD Yfiler Plus, 25 STRs, C<get_yfilerplus_str()> method
+=item * Yfiler Plus, 25 STRs, C<get_yfilerplus_str()> method
 
-=item * YHRD Maximal, 27 STRs, C<get_maximal_str()> method
+=item * Maximal, 27 STRs, C<get_maximal_str()> method
 
 =item * FTDNA, 102 STRs, C<get_ftdna_str()> method
 
