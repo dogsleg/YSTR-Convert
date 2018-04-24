@@ -1,6 +1,7 @@
 Changes
+lib/YSTR/Convert.pm
 Makefile.PL
 MANIFEST
 README
+t/cases.json
 t/YSTR-Convert.t
-lib/YSTR/Convert.pm
